@@ -1,0 +1,63 @@
+// CSS가 너무 길어진다면
+
+// CSS를 약간 프로그래밍 언어스럽게 작성할 수 있는 SASS라는 preprocessor 를 이용하시면 됩니다.
+
+// SASS에선 변수, 함수, 반복문, 연산자 이런게 사용가능해서
+
+// SASS 문법으로 쉽게쉽게 짧게짧게 CSS를 작성할 수 있습니다.
+
+// 작성한 뒤에 CSS로 컴파일만 해주시면 됩니다.
+
+// 근데 그건 node-sass라는 라이브러리만 설치하시면 알아서 해줍니다. 설치해보도록 합시다.
+
+
+$메인칼라 : #ff0000;
+
+.red{
+    color:$메인칼라;
+}
+//SASS의 mixin문법
+//이렇게 하면 '함수'라는 이름으로 밑의 css코드 전부를 대체할 수 있다.
+//프로그래밍 언어의 함수와 같은건데 css에서 mixin이라고 부른다. 
+//이 mixin을 사용하려면 @include mixin이름 의 형태로 가져올 수 있다. 
+@mixin 함수{
+    background-color: #eeeeee;
+    padding: 20px;
+    border-radius: 5px;
+    max-width:500px;
+    width: 100%;
+    margin: auto;
+}
+//SASS의 include문법
+.my-alert{
+    @include 함수()
+}
+//SASS의 extend문법
+.my-alert2 {
+    //my-alert의 모든것을 여기 복붙해주세요 라는 뜻
+    @extend .my-alert;
+    background:#ffe591;
+}
+
+
+.my-alert p{
+    margin-bottom:0;
+}
+
+// div.container h4{
+//     color: blue;
+// }
+
+// div.container p{
+//     color:green;
+// }
+
+//위의 코드를 nesting문법 활용하여 아래처럼 깔끔하게 가능. 
+// div.container{
+//     h4{
+//         color:blue;
+//     }
+//     p{
+//         color:green;
+//     }
+// }
